@@ -1,0 +1,257 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John Anderson",
+            "email": "john.anderson@example.com",
+            "role": "agent",
+            "password_hash": "$2b$10$XYZ123abcDEF456ghiJKL789mnoPQR012stuVWX345yzABC678def",
+            "phone_number": "+1-555-0101",
+            "is_verified": true,
+            "created_at": "2024-01-15T08:30:00Z"
+        },
+        {
+            "id": 2,
+            "name": "Sarah Martinez",
+            "email": "sarah.martinez@example.com",
+            "role": "seller",
+            "password_hash": "$2b$10$ABC789defGHI012jklMNO345pqrSTU678vwxYZA901bcdEFG234hij",
+            "phone_number": "+1-555-0102",
+            "is_verified": true,
+            "created_at": "2024-02-20T14:15:00Z"
+        },
+        {
+            "id": 3,
+            "name": "Michael Chen",
+            "email": "michael.chen@example.com",
+            "role": "user",
+            "password_hash": "$2b$10$DEF456ghiJKL789mnoABC012pqrSTU345vwxYZA678bcdEFG901hij",
+            "phone_number": "+1-555-0103",
+            "is_verified": true,
+            "created_at": "2024-03-10T09:45:00Z"
+        },
+        {
+            "id": 4,
+            "name": "Emily Johnson",
+            "email": "emily.johnson@example.com",
+            "role": "admin",
+            "password_hash": "$2b$10$GHI012jklMNO345pqrDEF678stuVWX901yzABC234defGHI567jkl",
+            "phone_number": "+1-555-0104",
+            "is_verified": true,
+            "created_at": "2023-12-01T10:00:00Z"
+        },
+        {
+            "id": 5,
+            "name": "David Brown",
+            "email": "david.brown@example.com",
+            "role": "seller",
+            "password_hash": "$2b$10$JKL345mnoABC678pqrDEF901stuVWX234yzABC567defGHI890jkl",
+            "phone_number": "+1-555-0105",
+            "is_verified": false,
+            "created_at": "2024-11-28T16:20:00Z"
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "city": "Los Angeles",
+            "province": "California",
+            "country": "United States",
+            "postal_code": "90001",
+            "google_maps_link": "https://maps.google.com/?q=34.0522,-118.2437"
+        },
+        {
+            "id": 2,
+            "city": "San Francisco",
+            "province": "California",
+            "country": "United States",
+            "postal_code": "94102",
+            "google_maps_link": "https://maps.google.com/?q=37.7749,-122.4194"
+        },
+        {
+            "id": 3,
+            "city": "Austin",
+            "province": "Texas",
+            "country": "United States",
+            "postal_code": "78701",
+            "google_maps_link": "https://maps.google.com/?q=30.2672,-97.7431"
+        },
+        {
+            "id": 4,
+            "city": "Miami",
+            "province": "Florida",
+            "country": "United States",
+            "postal_code": "33101",
+            "google_maps_link": "https://maps.google.com/?q=25.7617,-80.1918"
+        },
+        {
+            "id": 5,
+            "city": "Seattle",
+            "province": "Washington",
+            "country": "United States",
+            "postal_code": "98101",
+            "google_maps_link": "https://maps.google.com/?q=47.6062,-122.3321"
+        }
+    ],
+    "properties": [
+        {
+            "id": 1,
+            "title": "Modern Downtown Apartment with City Views",
+            "description": "Stunning 2-bedroom apartment in the heart of downtown. Features floor-to-ceiling windows, modern kitchen with stainless steel appliances, hardwood floors, and a private balcony overlooking the city skyline. Walking distance to restaurants, shops, and public transportation.",
+            "price": 675000,
+            "property_type": "apartment",
+            "bedrooms": 2,
+            "bathrooms": 2,
+            "area_sqm": 95,
+            "photo_location": [
+                "/uploads/properties/1/living-room.jpg",
+                "/uploads/properties/1/kitchen.jpg",
+                "/uploads/properties/1/bedroom-1.jpg",
+                "/uploads/properties/1/balcony.jpg"
+            ],
+            "views_count": 247,
+            "status": "available",
+            "owner_id": 2,
+            "location_id": 1,
+            "created_at": "2024-10-15T11:30:00Z"
+        },
+        {
+            "id": 2,
+            "title": "Charming Victorian Family House",
+            "description": "Beautiful 4-bedroom Victorian-style home with original architectural details. Recently renovated kitchen and bathrooms while preserving historic charm. Large backyard perfect for families, detached garage, and finished basement. Located in a quiet, tree-lined neighborhood near top-rated schools.",
+            "price": 1250000,
+            "property_type": "house",
+            "bedrooms": 4,
+            "bathrooms": 3,
+            "area_sqm": 220,
+            "photo_location": [
+                "/uploads/properties/2/exterior.jpg",
+                "/uploads/properties/2/living-room.jpg",
+                "/uploads/properties/2/kitchen.jpg",
+                "/uploads/properties/2/master-bedroom.jpg",
+                "/uploads/properties/2/backyard.jpg"
+            ],
+            "views_count": 412,
+            "status": "available",
+            "owner_id": 2,
+            "location_id": 2,
+            "created_at": "2024-09-20T09:15:00Z"
+        },
+        {
+            "id": 3,
+            "title": "Prime Development Land Near Tech Hub",
+            "description": "5-acre parcel of commercial-zoned land in rapidly growing tech corridor. Flat terrain, all utilities available at street. Perfect for office complex, mixed-use development, or tech campus. High visibility location with easy highway access.",
+            "price": 2500000,
+            "property_type": "land",
+            "bedrooms": null,
+            "bathrooms": null,
+            "area_sqm": 20234,
+            "photo_location": [
+                "/uploads/properties/3/aerial-view.jpg",
+                "/uploads/properties/3/street-view.jpg",
+                "/uploads/properties/3/survey-map.jpg"
+            ],
+            "views_count": 89,
+            "status": "available",
+            "owner_id": 5,
+            "location_id": 3,
+            "created_at": "2024-11-05T14:00:00Z"
+        },
+        {
+            "id": 4,
+            "title": "Luxury Beachfront Condo",
+            "description": "Exclusive 3-bedroom penthouse with breathtaking ocean views. This luxury condo features a gourmet kitchen, spa-like bathrooms, smart home technology, and a private rooftop terrace. Building amenities include pool, fitness center, concierge, and direct beach access.",
+            "price": 1850000,
+            "property_type": "apartment",
+            "bedrooms": 3,
+            "bathrooms": 3,
+            "area_sqm": 185,
+            "photo_location": [
+                "/uploads/properties/4/ocean-view.jpg",
+                "/uploads/properties/4/living-area.jpg",
+                "/uploads/properties/4/master-suite.jpg",
+                "/uploads/properties/4/rooftop-terrace.jpg",
+                "/uploads/properties/4/kitchen.jpg"
+            ],
+            "views_count": 531,
+            "status": "pending",
+            "owner_id": 2,
+            "location_id": 4,
+            "created_at": "2024-08-10T10:20:00Z"
+        },
+        {
+            "id": 5,
+            "title": "Cozy Starter Home in Suburban Neighborhood",
+            "description": "Perfect first home! This well-maintained 3-bedroom ranch-style house features an updated kitchen, new roof (2023), central air conditioning, and a spacious fenced backyard. Quiet cul-de-sac location, great schools, and community park nearby.",
+            "price": 425000,
+            "property_type": "house",
+            "bedrooms": 3,
+            "bathrooms": 2,
+            "area_sqm": 140,
+            "photo_location": [
+                "/uploads/properties/5/front-exterior.jpg",
+                "/uploads/properties/5/living-room.jpg",
+                "/uploads/properties/5/kitchen.jpg",
+                "/uploads/properties/5/backyard.jpg"
+            ],
+            "views_count": 198,
+            "status": "available",
+            "owner_id": 5,
+            "location_id": 5,
+            "created_at": "2024-11-12T13:45:00Z"
+        },
+        {
+            "id": 6,
+            "title": "Contemporary Loft in Arts District",
+            "description": "Industrial-chic loft with soaring ceilings, exposed brick, and massive windows. Open floor plan perfect for entertaining, modern kitchen with island, mezzanine bedroom area, and in-unit washer/dryer. Heart of the arts district with galleries, cafes, and nightlife at your doorstep.",
+            "price": 550000,
+            "property_type": "apartment",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "area_sqm": 110,
+            "photo_location": [
+                "/uploads/properties/6/main-area.jpg",
+                "/uploads/properties/6/kitchen.jpg",
+                "/uploads/properties/6/mezzanine.jpg",
+                "/uploads/properties/6/bathroom.jpg"
+            ],
+            "views_count": 305,
+            "status": "sold",
+            "owner_id": 2,
+            "location_id": 1,
+            "created_at": "2024-07-22T08:00:00Z"
+        }
+    ],
+    "favorites": [
+        {
+            "id": 1,
+            "user_id": 3,
+            "property_id": 1,
+            "created_at": "2024-10-20T15:30:00Z"
+        },
+        {
+            "id": 2,
+            "user_id": 3,
+            "property_id": 2,
+            "created_at": "2024-10-25T09:15:00Z"
+        },
+        {
+            "id": 3,
+            "user_id": 3,
+            "property_id": 5,
+            "created_at": "2024-11-15T14:20:00Z"
+        },
+        {
+            "id": 4,
+            "user_id": 1,
+            "property_id": 4,
+            "created_at": "2024-09-12T11:00:00Z"
+        },
+        {
+            "id": 5,
+            "user_id": 1,
+            "property_id": 3,
+            "created_at": "2024-11-08T16:45:00Z"
+        }
+    ]
+}

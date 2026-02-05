@@ -1,0 +1,49 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--button-color);
+  transition: 0.4s;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: var(--button-color);
+  color: var(--vt-c-white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  background-color: var(--button-hover-color);
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: var(--button-hover-color);
+    color: var(--vt-c-white);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+}
