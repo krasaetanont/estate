@@ -15,6 +15,7 @@ import AddPropertyView from '../views/seller/AddProp.vue'
 import EditPropertyView from '../views/seller/EditProp.vue'
 import AdminDashboardView from '../views/admin/AdminDashboard.vue'
 import NotFoundView from '../views/NotFound.vue'
+import MyListingsView from '../views/seller/MyList.vue'
 // router/index.js
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -35,6 +36,7 @@ const routes = [
   // Seller
   { path: '/seller', name: 'seller-dashboard', component: SellerView, meta: { requiresAuth: true, role: 'seller' } },
   { path: '/seller/add', name: 'add-property', component: AddPropertyView, meta: { requiresAuth: true, role: 'seller' } },
+  { path: '/seller/my-listings', name: 'my-listings', component: MyListingsView, meta: { requiresAuth: true, role: 'seller' } },
   { path: '/seller/edit/:id', name: 'edit-property', component: EditPropertyView, meta: { requiresAuth: true, role: 'seller' } },
 
   // Admin
