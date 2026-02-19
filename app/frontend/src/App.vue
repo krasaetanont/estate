@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <!-- Header Component -->
     <HeaderComponent />
 
-    <!-- Main Content Area -->
     <main class="main-content">
       <RouterView v-slot="{ Component }">
         <Transition name="fade" mode="out-in">
@@ -12,27 +10,18 @@
       </RouterView>
     </main>
 
-    <!-- Footer Component -->
+    <CookieConsent @consent="onConsent" />
     <FooterComponent />
 
-    <!-- Scroll to Top Button -->
     <button
       v-if="showScrollTop"
       @click="scrollToTop"
       class="scroll-to-top"
       aria-label="Scroll to top"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
@@ -40,47 +29,37 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
-import HeaderComponent from './components/common/Header.vue';
-import FooterComponent from './components/common/Footer.vue';
+import { ref, onMounted, onUnmounted } from 'vue'
+import HeaderComponent from './components/common/Header.vue'
+import FooterComponent from './components/common/Footer.vue'
+import CookieConsent from './components/CookieConsent.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CookieConsent,        // ✅ registered
   },
   setup() {
-    const showScrollTop = ref(false);
+    const showScrollTop = ref(false)
 
-    // Handle scroll to show/hide scroll-to-top button
-    const handleScroll = () => {
-      showScrollTop.value = window.scrollY > 300;
-    };
+    // ✅ defined inside setup and returned
+    const onConsent = (prefs) => {
+      console.log('User consented:', prefs)
+      if (prefs.analytics) { /* init analytics */ }
+      if (prefs.marketing) { /* init marketing */ }
+    }
 
-    // Scroll to top function
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    };
+    const handleScroll = () => { showScrollTop.value = window.scrollY > 300 }
+    const scrollToTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }) }
 
-    // Lifecycle hooks
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
-    });
+    onMounted(() => window.addEventListener('scroll', handleScroll))
+    onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
-    });
-
-    return {
-      showScrollTop,
-      scrollToTop
-    };
+    return { showScrollTop, scrollToTop, onConsent }
   }
-};
+}
 </script>
 
 <style>

@@ -65,6 +65,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../../stores/auth.js'
 
 const router = useRouter()
 const email = ref('')
@@ -72,11 +73,11 @@ const password = ref('')
 const isLoading = ref(false)
 // In src/components/user/Login.vue
 const emit = defineEmits(['login-success'])
-
+const auth = useAuthStore()
 const handleLogin = async () => {
   isLoading.value = true
   try {
-    // ... your login logic ...
+    await auth.login(email.value, password.value)
     emit('login-success') // Tell the view we are done!
   } catch (error) {
     console.error('Login failed', error)

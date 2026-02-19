@@ -16,6 +16,7 @@ import EditPropertyView from '../views/seller/EditProp.vue'
 import AdminDashboardView from '../views/admin/AdminDashboard.vue'
 import NotFoundView from '../views/NotFound.vue'
 import MyListingsView from '../views/seller/MyList.vue'
+import { useAuthStore } from '../stores/auth.js'
 // router/index.js
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -48,6 +49,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes
+})
+
+router.beforeEach((to) => {
+  const auth = useAuthStore()
+
+  if (to.meta.requiresAuth && !auth.isLoggedIn) {
+    return { path: '/login', query: { redirect: to.fullPath } }
+  }
 })
 
 export default router
