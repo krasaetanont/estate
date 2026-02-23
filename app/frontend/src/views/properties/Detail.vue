@@ -187,14 +187,15 @@
               <strong>{{ property.bathrooms }}</strong>
               <span>{{ property.bathrooms === 1 ? 'Bathroom' : 'Bathrooms' }}</span>
             </li>
-            <li v-if="property.area !== undefined" class="detail-stats__item">
+            <!-- FIX: was property.area, correct field is area_sqm -->
+            <li v-if="property.area_sqm !== undefined" class="detail-stats__item">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="2"></rect>
                 <path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path>
               </svg>
-              <strong>{{ property.area }}</strong>
+              <strong>{{ property.area_sqm }}</strong>
               <span>m²</span>
             </li>
             <li v-if="property.parking !== undefined" class="detail-stats__item">
@@ -345,8 +346,9 @@
               :to="{ name: 'PropertyDetail', params: { id: sp.id } }"
               class="detail-similar__item"
             >
+              <!-- FIX: was sp.images?.[0] || sp.image || sp.thumbnail, correct field is photo_location -->
               <img
-                :src="sp.images?.[0] || sp.image || sp.thumbnail || '/placeholder.jpg'"
+                :src="sp.photo_location?.[0] || sp.images?.[0] || sp.image || '/placeholder.jpg'"
                 :alt="sp.title"
                 class="detail-similar__img"
               />
@@ -372,7 +374,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 export default {
@@ -381,7 +383,7 @@ export default {
   props: {
     jsonPath: {
       type: String,
-      default: '../src/example.json'
+      default: '/example.json'  // FIX: was '../src/example.json' (breaks in production)
     },
     forRent: {
       type: Boolean,
@@ -456,10 +458,11 @@ export default {
 
     // ─── Computed ─────────────────────────────────────────────
 
-    // Normalise images: support images[], image, thumbnail
+    // FIX: Prioritise photo_location (actual data model field) before legacy fallbacks
     const galleryImages = computed(() => {
       if (!property.value) return [];
       const p = property.value;
+      if (Array.isArray(p.photo_location) && p.photo_location.length) return p.photo_location;
       if (Array.isArray(p.images) && p.images.length) return p.images;
       if (p.image)     return [p.image];
       if (p.thumbnail) return [p.thumbnail];
@@ -489,10 +492,10 @@ export default {
       return [];
     });
 
-    // Quick stats
+    // FIX: check area_sqm (correct field), not area
     const hasStats = computed(() => {
       if (!property.value) return false;
-      return ['bedrooms', 'bathrooms', 'area', 'parking'].some(
+      return ['bedrooms', 'bathrooms', 'area_sqm', 'parking'].some(
         k => property.value[k] !== undefined
       );
     });
@@ -618,6 +621,11 @@ export default {
     onMounted(() => {
       fetchProperty();
       window.addEventListener('keydown', onKeydown);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('keydown', onKeydown);
+      clearTimeout(toastTimer);
     });
 
     // Re-fetch if route param changes (navigating between properties)

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :data-scroll-top="showScrollTop">
     <HeaderComponent />
 
     <main class="main-content">

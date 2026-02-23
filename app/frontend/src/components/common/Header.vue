@@ -145,6 +145,7 @@
 <script>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '../../stores/auth.js';
 
 export default {
   name: 'HeaderComponent',
@@ -155,7 +156,9 @@ export default {
     const hasLogo = ref(true);
 
     // Mock user data - Replace with actual authentication state
-    const isLoggedIn = ref(false); // Change to true to test logged-in state
+    // const isLoggedIn = ref(false); // Change to true to test logged-in state
+    const auth = useAuthStore();
+    const isLoggedIn = computed(() => auth.isLoggedIn);
     const userName = ref('John Anderson');
     const userEmail = ref('john.anderson@example.com');
     const userRole = ref('seller'); // 'user', 'seller', 'agent', 'admin'

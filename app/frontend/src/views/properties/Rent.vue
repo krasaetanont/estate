@@ -104,7 +104,7 @@
               :key="property.id"
               :property="property"
               :location="getLocationForProperty(property)"
-              :forRent="false"
+              :forRent="true"
               :showDescription="true"
               :showPropertyType="true"
               :showViews="false"
@@ -224,7 +224,7 @@ export default {
 
     // Hero stats
     const heroStats = ref([
-      { value: '1,250+', label: 'Properties for Sale' },
+      { value: '1,250+', label: 'Properties for Rent' },
       { value: '5,000+', label: 'Happy Homeowners' },
       { value: '500+', label: 'Expert Agents' }
     ]);
